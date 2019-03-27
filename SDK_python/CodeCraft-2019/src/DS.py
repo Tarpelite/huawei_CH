@@ -1,3 +1,5 @@
+import networkx as nx
+
 class Car:
     def __init__(self):
         self.id = 0
@@ -54,17 +56,20 @@ class Net:
         self.cars = []
         self.crosses = []
         self.roads = []
+        self.routes = []
         content = []
+        self.G = nx.DiGraph()
+        self.answers = []
 
         with open(car_path) as f:
             content = f.readlines()
         content = content[1:]
         content[-1] += '\n'
-        #print(content)
+
         for record in content:
             c1 = Car()
             record = record[1:-2].split(',')
-            #print(record)
+
             c1.set_info(record)
             self.cars.append(c1)
         
@@ -87,12 +92,26 @@ class Net:
             record = record[1:-2].split(',')
             r.set_info(record)
             self.roads.append(r)
+        
+        for road in self.roads:
+            if  road.isDuplex == 1:
+                self.G.add_weighted_edges_from([(road.From, road.to, road.length), (road.to, road.From, road.length)])
+            else:
+                self.G.add_weighted_edges_from([(road.From, road.to, road.length)])
+        
+    
+    def find_route(self):
+        for c in self.cars:
+            res = [c.id]
+            path = nx.dijkstra_path(self.G, c.From, c.to)
+            res.extend(path)
+            self.answers.append(res)
     
 if __name__ == "__main__":
     car_path = "../config/car.txt"
     cross_path = "../config/cross.txt"
     road_path = "../config/road.txt"
     net = Net(car_path, cross_path, road_path)
-    for ele in net.roads:
-        print(ele.id)
+    net.find_route()
+    print(net.answers)
         
