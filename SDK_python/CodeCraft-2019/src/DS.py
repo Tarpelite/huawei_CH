@@ -32,15 +32,16 @@ class Net:
         self.routes = []
         self.G = nx.DiGraph()
         self.answers = []
+        washer =  lambda x:[int(i) for i in x.replace('(','').replace(')','').split(",")]
 
         with open(car_path) as f:
-            self.cars = [Car(*i) for i in f.readlines()]
+            self.cars = [Car(*(washer(i))) for i in f.readlines() if i[0] !='#']
 
         with open(cross_path) as f:
-            self.crosses = [Cross(*i) for i in f.readlines()]
+            self.crosses = [Cross(*(washer(i))) for i in f.readlines() if i[0] !='#']
 
         with open(road_path) as f:
-            self.roads =  [Road(*i) for i in f.readlines()]
+            self.roads =  [Road(*(washer(i))) for i in f.readlines() if i[0] !='#']
         
         for road in self.roads:
             if  road.isDuplex == 1:
