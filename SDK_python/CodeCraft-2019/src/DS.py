@@ -1,49 +1,25 @@
 import networkx as nx
-
-class Car:
-    def __init__(self,Id,From,to,speed,planTime):
-        self.id = Id
-        self.From = From
-        self.to = to
-        self.speed = speed
-        self.planTime = planTime
-
-class Cross:
-    def __init__(self,id,rId1,rId2,rId3,rId4):
-        self.id = id
-        self.rId1 = rId1
-        self.rId2 = rId2
-        self.rId3 = rId3
-        self.rId4 = rId4
-    
-class Road:
-    def __init__(self,id,length,speed,channel,From,to,isDuplex):
-        self.id  = id
-        self.length = length
-        self.speed = speed
-        self.channel = channel
-        self.From = From
-        self.to = to
-        self.isDuplex = isDuplex
+import Road as rd
+import Cross as cr
+import Car as ca
+import functools
 
 class Net:
     def __init__(self, car_path, cross_path, road_path):
-        self.roads = []
-        self.routes = []
         self.G = nx.DiGraph()
         self.answers = []
         washer =  lambda x:[int(i) for i in x.replace('(','').replace(')','').split(",")]
 
         with open(car_path) as f:
-            self.cars = [Car(*(washer(i))) for i in f.readlines() if i[0] !='#']
+            [ca.addCar(ca.CarInst(*(washer(x)))) for x in f.readlines() if x[0] !='#']
 
         with open(cross_path) as f:
-            self.crosses = [Cross(*(washer(i))) for i in f.readlines() if i[0] !='#']
+            [cr.addCross(cr.CrossInst(*(washer(x)))) for x in f.readlines() if x[0] !='#']
 
         with open(road_path) as f:
-            self.roads =  [Road(*(washer(i))) for i in f.readlines() if i[0] !='#']
+            [rd.addRoad(rd.RoadInst(*(washer(x)))) for x in f.readlines() if x[0] !='#']
         
-        for road in self.roads:
+        for road in rd.RoadList:
             if  road.isDuplex == 1:
                 self.G.add_weighted_edges_from([(road.From, road.to, road.length), (road.to, road.From, road.length)])
             else:
@@ -51,7 +27,7 @@ class Net:
         
     
     def find_route(self):
-        for c in self.cars:
+        for c in ca.CarList:
             res = [c.id]
             path = nx.dijkstra_path(self.G, c.From, c.to)
             res.extend(path)
