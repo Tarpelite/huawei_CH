@@ -8,6 +8,13 @@ class CrossInst:
         self.rId2 = rId2
         self.rId3 = rId3
         self.rId4 = rId4
+        self.roadTuple =(rId1,rId2,rId3,rId4)
+
+
+
+
+
+
 
 def addCross(crossObj:CrossInst):
     CrossList.append(crossObj)

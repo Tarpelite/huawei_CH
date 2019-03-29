@@ -18,6 +18,7 @@ class Net:
 
         with open(road_path) as f:
             [rd.addRoad(rd.RoadInst(*(washer(x)))) for x in f.readlines() if x[0] !='#']
+
         
         for road in rd.RoadList:
             if  road.isDuplex == 1:
