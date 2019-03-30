@@ -27,9 +27,9 @@ class Net:
             self.answers.append(res)
     
 if __name__ == "__main__":
-    car_path = "/home/tarpe/酋长的工作区/huawei_softChallenge/huawei_CH/SDK_python/CodeCraft-2019/config/car.txt"
-    cross_path = "/home/tarpe/酋长的工作区/huawei_softChallenge/huawei_CH/SDK_python/CodeCraft-2019/config/cross.txt"
-    road_path = "/home/tarpe/酋长的工作区/huawei_softChallenge/huawei_CH/SDK_python/CodeCraft-2019/config/road.txt"
+    car_path = "../config/car.txt"
+    cross_path = "../config/cross.txt"
+    road_path = "../config/road.txt"
     net = Net(car_path, cross_path, road_path)
     net.find_route()
     print(net.answers)

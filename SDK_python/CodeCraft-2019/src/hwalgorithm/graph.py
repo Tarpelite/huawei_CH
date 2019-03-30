@@ -1,6 +1,6 @@
-import hwdata.RoadInst as rd
-import hwdata.CrossInst as cr
-import hwdata.CarInst as ca
+import hwdata.Road as rd
+import hwdata.Cross as cr
+import hwdata.Car as ca
 
 def HWDijkstra(src,tar):
     """Dijkstra Algorithm on hwdata """
