@@ -17,12 +17,13 @@ def HWDijkstra(src,tar):
             graph[ed] = r.length
 
     visited = []
+    '''
     if src in nodes:
         visited.append(src)
         nodes.remove(src)
     else:
         return None
-
+    '''
     distance = {src:0}
     for i in nodes:
         query = (src, i)
