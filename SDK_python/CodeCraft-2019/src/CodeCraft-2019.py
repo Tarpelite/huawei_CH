@@ -1,6 +1,6 @@
 import logging
 import sys
-from DS import  Car, Road, Cross, Net
+from hwdata.DS import  Car, Road, Cross, Net
 
 logging.basicConfig(level=logging.DEBUG,
                     filename='../logs/CodeCraft-2019.log',

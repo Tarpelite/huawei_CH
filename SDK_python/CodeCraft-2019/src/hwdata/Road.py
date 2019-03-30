@@ -1,4 +1,4 @@
-import hwdata.Cross as cr
+from .Cross import CrossInst as cr
 
 RoadList=[]
 __RoadIndexing={}
