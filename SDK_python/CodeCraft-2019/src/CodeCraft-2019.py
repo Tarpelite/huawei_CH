@@ -1,6 +1,6 @@
 import logging
 import sys
-from src.hwalgorithm.DS import Net
+from hwalgorithm.DS import Net
 
 logging.basicConfig(level=logging.DEBUG,
 
@@ -29,12 +29,12 @@ def main():
     # process
     # to write output file
 
-    net = Net(car_path, road_path, cross_path)
-    net.find_route()
+    #net = Net(car_path, road_path, cross_path)
+    #net.find_route()
     with open(answer_path,"w") as f:
         line = "#(carId,StartTime,RoadId...)\n"
         f.write(line)
-        f.writelines(['({data})\n'.format(data=','.join([str(j) for j in i])) for i in net.answers])
+        f.writelines(['({data})\n'.format(data=','.join([str(j) for j in i])) for i in []])
 
 
 

@@ -1,7 +1,7 @@
-import src.hwdata.Road as rd
-import src.hwdata.Cross as cr
-import src.hwdata.Car as ca
-from src.hwalgorithm.graph import HWDijkstra
+import hwdata.Road as rd
+import hwdata.Cross as cr
+import hwdata.Car as ca
+from hwalgorithm.graph import HWDijkstra
 
 class Net:
     def __init__(self, car_path, cross_path, road_path):
