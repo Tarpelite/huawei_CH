@@ -72,6 +72,11 @@ def HWDijkstra(src,tar):
     path_ex = [src]
     path_ex.extend(path[src][tar])
     path_ans = []
+
+    if len(path_ex) == 1 or len(path_ex) == 2:
+        query = (src, tar)
+        path_ans.append(origin_graph.get(query))
+        return path_ans
     for i in range(len(path_ex)-1):
         query = (path_ex[i], path_ex[i+1])
         path_ans.append(origin_graph.get(query))
