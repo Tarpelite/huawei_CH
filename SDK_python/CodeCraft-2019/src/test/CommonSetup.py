@@ -1,8 +1,8 @@
 
-import src.hwdata.Road as rd
-import src.hwdata.Cross as cr
-import src.hwdata.Car as ca
-import sys,os
+import hwdata.Road as rd
+import hwdata.Cross as cr
+import hwdata.Car as ca
+
 def SetUp():
     car_path = "./config/car.txt"
     cross_path = "./config/cross.txt"
@@ -19,3 +19,4 @@ def SetUp():
 
     with open(road_path) as f:
         [rd.addRoad(rd.RoadInst(*(washer(x)))) for x in f.readlines() if x[0] !='#']
+
