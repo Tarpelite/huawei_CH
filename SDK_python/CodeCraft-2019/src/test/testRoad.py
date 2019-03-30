@@ -1,7 +1,7 @@
 import unittest
-import hwdata.Road as rd
-import hwdata.Cross  as cr
-from test.CommonSetup import SetUp as su
+import src.hwdata.Road as rd
+import src.hwdata.Cross  as cr
+from src.test.CommonSetup import SetUp as su
 
 
 class testRoad(unittest.TestCase):

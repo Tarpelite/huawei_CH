@@ -1,7 +1,7 @@
-import hwdata.Road as rd
-import hwdata.Cross as cr
-import hwdata.Car as ca
-from hwalgorithm.graph import HWDijkstra
+import src.hwdata.Road as rd
+import src.hwdata.Cross as cr
+import src.hwdata.Car as ca
+from src.hwalgorithm.graph import HWDijkstra
 
 class Net:
     def __init__(self, car_path, cross_path, road_path):
@@ -27,9 +27,9 @@ class Net:
             self.answers.append(res)
     
 if __name__ == "__main__":
-    car_path = "../config/car.txt"
-    cross_path = "../config/cross.txt"
-    road_path = "../config/road.txt"
+    car_path = "../../config/car.txt"
+    cross_path = "../../config/cross.txt"
+    road_path = "../../config/road.txt"
     net = Net(car_path, cross_path, road_path)
     net.find_route()
     print(net.answers)

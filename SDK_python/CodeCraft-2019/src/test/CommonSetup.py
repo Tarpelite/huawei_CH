@@ -1,15 +1,13 @@
 
-import hwdata.Road as rd
-import hwdata.Cross as cr
-import hwdata.Car as ca
+import src.hwdata.Road as rd
+import src.hwdata.Cross as cr
+import src.hwdata.Car as ca
 import sys,os
 def SetUp():
-    car_path = "../config/car.txt"
-    cross_path = "../config/cross.txt"
-    road_path = "../config/road.txt"
+    car_path = "./config/car.txt"
+    cross_path = "./config/cross.txt"
+    road_path = "./config/road.txt"
 
-    print(sys.path)
-    print(os.getcwd())
     washer =  lambda x:[int(i) for i in x.replace('(','').replace(')','').split(",")]
 
 

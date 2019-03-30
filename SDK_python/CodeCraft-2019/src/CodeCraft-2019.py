@@ -1,8 +1,9 @@
 import logging
 import sys
-from hwdata.DS import  Car, Road, Cross, Net
+from src.hwalgorithm.DS import Net
 
 logging.basicConfig(level=logging.DEBUG,
+
                     filename='../logs/CodeCraft-2019.log',
                     format='[%(asctime)s] %(levelname)s [%(funcName)s: %(filename)s, %(lineno)d] %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
@@ -33,13 +34,9 @@ def main():
     with open(answer_path,"w") as f:
         line = "#(carId,StartTime,RoadId...)\n"
         f.write(line)
-        for answer in net.answers:
-            line = "(" 
-            for tos in answer:
-                line += tos + ","
-            line += ")\n"
-            f.write(line)   
-    
+        f.writelines(['({data})\n'.format(data=','.join([str(j) for j in i])) for i in net.answers])
+
+
 
 if __name__ == "__main__":
     main() 
